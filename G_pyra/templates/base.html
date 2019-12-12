@@ -1,0 +1,32 @@
+{% load static %}
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% if title %}
+    <title>{{title}}</title>
+    {% else %}
+    <title>G_pyra</title>
+    {% endif %}
+
+    {% block styles %}
+      {% bootstrap_css %}   
+      <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    {% endblock styles %}
+
+  </head>
+  <body>
+  {% include 'navbar.html' %}
+
+  {% block content %}
+
+  
+  {% endblock content %}
+
+  {% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {% bootstrap_javascript %}
+  {% endblock scripts %}
+  </body>
+</html>
