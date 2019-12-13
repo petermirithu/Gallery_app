@@ -5,23 +5,7 @@
   <head>
     <meta charset="utf-8">
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <style>
-      #bar{
-        width: 100%;        
-        border: 1px solid #222;
-        background-color: #111;
-        background-image: linear-gradient(#444, #111);
-        border-radius: 6px;
-        box-shadow: 0 1px 1px #777;
-      }      
-      #bar a{
-        cursor:pointer
-      }
-      #bar a:hover{
-        background-color:lightblue;
-        color:black;
-      }            
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
   </head>
   <body>
     <nav id="bar" class="navbar sticky-top navbar-expand-lg navbar-light">
@@ -41,9 +25,9 @@
         </ul>
         <ul class="navbar-nav ml-auto">  
           <li>
-            <form class="navbar-form" role='search' action="">
-              <input type="text" class="form-control" placeholder="Search Article" name="pic">
-              <button type="submit" class="btn btn-outline-success">Search</button>            
+            <form class="navbar-form" role='search' action="">              
+                <input type="text" class="form-control" placeholder="Search Category" name="pic">
+                <button><i style="color:red" class='fa fa-search'></i></button>              
             </form>  
           </li>                   
         </ul>
