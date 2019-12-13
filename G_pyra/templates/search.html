@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">      
+      {% if images %}        
+        <h5 class="alert alert-success">Found {{images|length}} related to <hr> {{message}}</h5>
+      {% else %}  
+        <h5 class="alert alert-danger">Found 0 images related to <hr> {{message}}</h5>
+      {% endif %}
+
+      <h2>Images</h2>
+      {% if images %}  
+        {% for image in images %}
+          <div class="card" style="width: 18rem;">
+            <img src="{{image.image_url.url}}" class="card-img-top" width="250px" alt="Image">                            
+            <div class="card-body">
+              <h5 class="card-title">{{image.name}}</h5>
+              <p class="card-text">{{image.description}}</p>
+              <div class="card-footer">
+                <p>{{image.category}}</p>
+                <p>{{image.location}}</p>
+                <p>{{image.posted_on}}</p>
+              </div>
+              <a href="/image/{{image.id}}" class="btn btn-primary">More</a>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}                
+    </div>
+  </div>
+{% endblock content %}
