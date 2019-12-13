@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid">   
+  {% if image %}      
+    <div class="card" style="width: 18rem;">
+      <img src="{{image.image_url.url}}" class="card-img-top" width="250px" alt="Image">                            
+      <div class="card-body">
+        <h5 class="card-title">{{image.name}}</h5>
+        <p class="card-text">{{image.description}}</p>
+        <div class="card-footer">
+          <p>{{image.category}}</p>
+          <p>{{image.location}}</p>
+          <p>{{image.posted_on}}</p>
+        </div>        
+      </div>
+    </div>
+  {% else %}  
+    <h5 class="alert alert-danger">No Details for the Image</h5>    
+  {% endif %}      
+</div>          
+{% endblock content %}
