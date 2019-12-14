@@ -1,5 +1,6 @@
 from django.db import models
 import datetime as dt
+import copy
 
 class Category(models.Model):
   '''
@@ -18,6 +19,28 @@ class Category(models.Model):
     category=cls.objects.filter(name=category)
     return category
 
+  def save_category(self):
+    '''
+    function that helps in saving a category to the database
+    '''
+    self.save()  
+
+  def delete_category(self):
+    '''
+    function that deletes a category from the database
+    '''
+    self.delete()
+
+  
+  # def update_category(cate_id,upd_categ):
+  #   '''
+  #   function that helps in writing an existing category
+  #   '''
+  #   cate=Category.objects.filter(id=cate_id)
+  #   cate.name=upd_categ
+  #   updated_cate=cate
+  #   updated_cate.save()    
+  #   return updated_cate
 
 class Location(models.Model):
   '''
@@ -36,6 +59,25 @@ class Location(models.Model):
     location=cls.objects.filter(name=location)
     return location
 
+  def save_location(self):
+    '''
+    function that helps in saving a location
+    '''
+    self.save()  
+
+  def delete_location(self):
+    '''
+    function that deletes a location from the database
+    '''
+    self.delete()
+
+  # @classmethod
+  # def update_location(cls,loc_id):
+  #   '''
+  #   function that helps in writing an existing location
+  #   '''
+  #   location=cls.objects.filter(id=loc_id)
+  #   return location     
 
 class Image(models.Model):
   '''
@@ -47,6 +89,27 @@ class Image(models.Model):
   posted_on=models.DateField(auto_now_add=True)  
   category=models.ForeignKey(Category,on_delete=models.CASCADE)
   location=models.ForeignKey(Location,on_delete=models.CASCADE)  
+
+  def save_image(self):
+    '''
+    function that saves a new image to the database    
+    '''
+    self.save()
+
+  def delete_image(self):
+    '''
+    function that deletes an image from the database
+    '''
+    self.delete()
+
+  @classmethod
+  def get_image_by_id(cls,image_id):
+    '''
+    function that helps in getting an  by id
+    '''
+    found=cls.objects.filter(id=image_id)
+    return found
+    
   @classmethod
   def search_image(cls,search_term):
     '''
@@ -62,9 +125,22 @@ class Image(models.Model):
     '''
     images=cls.objects.filter(location__in=location_name) 
     return images
-    
+
+  class Meta:
+    ordering=['image_name']      
+
+  @classmethod
+  def copy_image(cls,image_url):
+    '''
+    function that helps in copying the image url
+    '''
+    copied_element=copy.deepcopy(image_url)
+
+    return copied_element
+
   def __str__(self):
       return self.image_name
+
   
 
 
