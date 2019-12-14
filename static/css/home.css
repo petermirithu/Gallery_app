@@ -1,19 +1,35 @@
 /************************************ navbar css ************************************/
 #bar{
-  width: 100%;        
+  width: vw;        
   border: 1px solid #222;
   background-color: #111;
   background-image: linear-gradient(#444, #111);
   border-radius: 6px;
+  
   box-shadow: 0 1px 1px #777;
 }      
 #bar a{
-  cursor:pointer
+  cursor:pointer;
+  color:orange;
 }
 #bar a:hover{
   background-color:lightblue;
   color:black;
 }      
+/* card style */
+.cardx{
+  margin-left: 80%;
+}
+.navCate a {
+  cursor: pointer;
+  width: 200px;
+  margin-bottom: 10px;
+}
+.navCate a:hover{
+  background-color: #222;
+  color: white;
+}
+
 
 /************************************ flip box css ************************************/
 @import url('https://fonts.googleapis.com/css?family=Sarala:700|Exo+2:300');
@@ -24,8 +40,10 @@
   -webkit-tap-highlight-color: rgba(255,255,255,0);
   outline: 1px solid transparent;
 }
-
-.container{
+body{
+  background-color: whitesmoke;
+}
+#flipCards.container{
 	margin-top: 40px;
 }
 #flipCards .wrapper{
@@ -54,16 +72,16 @@
 }
 
 #flipCards .front{
-  background-image: linear-gradient(180deg, rgba(145,141,144,1) 0%, rgba(92,91,94,0) 100%);
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.63) 0%, rgb(0, 0, 0) 100%);
   transform: rotateY(0deg) translateZ(160px); 
-  border-radius: 40px 3px 0 40px;
+  border-radius: 40px 0px  40px 0;
 }
 
 #flipCards .right{ 
-  background-image: linear-gradient(0deg, rgba(145,141,144,1) 0%, rgba(92,91,94,0) 100%);
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.719) 0%, rgb(0, 0, 0) 100%);
   opacity: 0.08;
   transform: rotateY(90deg) translateZ(130px);
-  border-radius: 0 0 40px 3px;
+  border-radius: 0 40px 0 40px;
 }
 
 #flipCards #card:hover{
@@ -78,17 +96,13 @@
   opacity: 1; 
 }
 
-#flipCards h1,h2{
+#flipCards ,h1,h2{
   margin: 0;
   font-size: 38px;
   letter-spacing: -.25px;  
   font-family: 'Sarala'; 
   font-weight: 700;
-}
-
-#flipCards h2{
-  font-size: 21px;
-  transform: translateX(-34px);
+  color: lightblue;
 }
 
 #flipCards p{
@@ -112,12 +126,13 @@
 }
 
 #flipCards .img-wrapper{
-  animation: float 4s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite alternate;
+  animation: float 4s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite alternate;  
   position: absolute;
   top: 0; right: 0;
   pointer-events: none;
 	backface-visibility: hidden;
-	margin-top: 100px;
+  margin-top: 100px;
+  margin-left: 20px;
 }
 
 @keyframes float{
@@ -125,12 +140,12 @@
     transform: translateZ(20px);
   }
   100%{
-    transform: translateY(-21px) translateX(-13px) translateZ(30px);
+    transform: translateY(-21px) translateX(20px) translateZ(30px);
   }
 }
-
+/* make the image small and slide on the right */
 #flipCards #card:hover ~ .img-wrapper img{
-  transform: scale(0.9) translateX(77%) translateY(90%);
+  transform: scale(0.6) translateX(77%) translateY(50%);
 }
 
 #flipCards ul{
@@ -152,32 +167,6 @@
   left: -21px;
   opacity: .55;
 }
-
-/* button{
-  position: absolute;
-  right: 21px; 
-  bottom: 34px;
-  border: none;
-  box-shadow: none;
-  background: none;
-  color: inherit;
-  font-family: 'Exo 2';
-  font-weight: 300;
-  font-size: 15px;  
-  letter-spacing: -.25px;
-  font-weight: 700;
-  padding: 13px 34px;
-  border-radius: 55px 55px 21px 55px;
-  background-image: linear-gradient(130deg, rgba(117,51,165,1)  50%, rgba(51,46,57,.89) 100%);
-  background-size: 125% 100%;
-  background-position: right;
-  cursor: pointer;
-  box-shadow: 8px 5px 13px rgba(34,34,34,.08);
-  transform: scale(0) skewY(13deg);
-  transition: all 150ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
-  transform-origin: right bottom;
-} */
-
 #flipCards #card:hover button{
    transform: scale(1) skewY(0);
 }
@@ -200,5 +189,98 @@ opacity: 0;
 @media only screen and (max-width: 600px){
   body{
     transform: scale(.67);
+  }
+}
+
+/************************************ Modals ************************************/
+#myImg{
+  margin-left: 10px;
+  width: fit-content;
+  animation: beat .70s infinite alternate;
+}
+#cardImg{
+  width:250px;
+}
+
+@keyframes beat{
+	to { transform: scale(0.95); }
+}
+.img254{
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-left: 10px;
+}
+.img254:hover {
+  opacity: 0.7;
+}
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 1; 
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.9);
+  }
+
+.modal-content {   
+  display: block;
+  width: 30vw;
+  max-width: 700px;
+  height: 20vh;  
+  /* transform: translate(-50%, -50%); */
+}
+.close {
+  position: absolute;
+  margin-top: 100px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* .modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+} */
+.modal-content, #card {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;  
+}
+.modal-content #img01{
+  width: fit-content;  
+}
+#card{
+  margin-left: 50%;
+  width: 30%;
+  height: 40%;
+}
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
   }
 }
