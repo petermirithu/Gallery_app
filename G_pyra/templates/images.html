@@ -1,31 +1,56 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container-fluid">
-  <div class="row">
-    <h1>Images for {{title}}</h1>
-    <hr>
-    {% if images %}
-      {% for image in images %}
-      <div class="card-columns">
-        <div class="card" style="width: 18rem;">
-          <img src="{{image.image_url.url}}" class="card-img-top" width="250px" alt="Image">                            
-          <div class="card-body">
-            <h5 class="card-title">{{image.name}}</h5>
-            <p class="card-text">{{image.description}}</p>
-            <div class="card-footer">
-              <p>{{image.category}}</p>
-              <p>{{image.location}}</p>
-              <p>{{image.posted_on}}</p>
-            </div>
-            <a href="/image/{{image.id}}" class="btn btn-primary">More</a>
-          </div>
-        </div>
-        <br>
+<div class="container">
+  <h1 class="text-center">Location Section</h1>
+  <h2 class="text-center" style="">Images Taken in {{title}}</h2>
+  <hr>      
+  <div class="row">            
+    <div class="col-m-4">
+      <div class="navCate">
+        <h3>Categories</h3>      
+        <hr>
+        <a class="btn btn-outline-dark" href="/category/Landscape">Landscape photos</a><br>
+        <a class="btn btn-outline-dark" href="/category/Wildlife">Wildlife photos</a><br>
+        <a class="btn btn-outline-dark" href="/category/Portrait">Portrait photos</a><br>
+        <a class="btn btn-outline-dark" href="/category/Architectural">Architectural photos</a><br>
+        <a class="btn btn-outline-dark" href="/category/Food">Food photos</a><br>
+        <a class="btn btn-outline-dark" href="/category/Vehicles">Vehicles photos</a><br>
+        <a class="btn btn-outline-dark" href="/category/Fashion">Fashion photos</a><br>
       </div>
-      {% endfor %}
+    </div>
+    <div class="col-md-8">
+    {% if images %}
+      <div class="card-columns">
+      {% for image in images %}      
+        <div class="card" id="cardImg">                      
+          <h4>{{image.image_name}}</h4>          
+          <img onclick="onClick(this)" src="{{image.image_url.url}}" class="img254" id="myImg" style="width:250px;height:250px;" alt="<p> <b>Caption:</b> {{image.image_name}}.<br> <b>Description:</b> {{image.description}}<br> <b>Category:</b> {{image.category}}<br> <b>Location:</b> {{image.location}}<br> <b>Posted on:</b> {{image.posted_on}}</p>"><br>                              
+          <a href="/copy/{{image.image_url}}">Copy</a>
+        </div>           
+        <div id="modal01" class="modal" onclick="this.style.display='none'">
+          <span class="close">&times;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <div class="modal-content">
+            <img id="img01" style="max-width:400px;max-height:500px">               
+          </div>
+            <div id="card" class="card bg-light">                
+              <div style="float:left" id="description"></div>                
+            </div>
+        </div>                                                  
+        <script>            
+          var descriptionText = document.getElementById("description");            
+          function onClick(element) {
+            document.getElementById("img01").src = element.src;              
+            descriptionText.innerHTML = element.alt;
+            document.getElementById("modal01").style.display = "block";
+          }
+        </script>                                   
+      {% endfor %}         
+      </div>
+    {% else %}        
+      <h2 style="float:left;margin-top:100px;margin-right:50%" class="alert alert-danger">No images taken in this area</h2>
     {% endif %}
-
-  </div>
+    </div>
+  </div>  
 </div>
 {% endblock content %}
