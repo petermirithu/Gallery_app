@@ -3,30 +3,56 @@
 {% block content %}
   <div class="container">
     <div class="row">      
-      {% if images %}        
-        <h5 class="alert alert-success">Found {{images|length}} related to <hr> {{message}}</h5>
-      {% else %}  
-        <h5 class="alert alert-danger">Found 0 images related to <hr> {{message}}</h5>
-      {% endif %}
-
+      <div class="alert">
+        {% if images %}        
+          <h5 class="alert alert-success">Found {{images|length}} result related to <hr> {{message}}</h5>
+        {% else %}  
+          <h5 class="alert alert-danger">No results<hr> {{message}}</h5>
+        {% endif %}
+      </div>
       <h2>Images</h2>
       {% if images %}  
         {% for image in images %}
-          <div class="card" style="width: 18rem;">
-            <img src="{{image.image_url.url}}" class="card-img-top" width="250px" alt="Image">                            
-            <div class="card-body">
-              <h5 class="card-title">{{image.name}}</h5>
-              <p class="card-text">{{image.description}}</p>
-              <div class="card-footer">
-                <p>{{image.category}}</p>
-                <p>{{image.location}}</p>
-                <p>{{image.posted_on}}</p>
+        <div class="card-columns">
+          <div class="card" style="width:600px">
+            <div class="row">
+              <div class="col-md-6">
+                <img onclick="onClick(this)" src="{{image.image_url.url}}" class="img254" id="myImg" style="width:250px;height:250px;" alt="<p> <b>Caption:</b> {{image.image_name}}.<br> <b>Description:</b> {{image.description}}<br> <b>Category:</b> {{image.category}}<br> <b>Location:</b> {{image.location}}<br> <b>Posted on:</b> {{image.posted_on}}</p>"><br>                              
               </div>
-              <a href="/image/{{image.id}}" class="btn btn-primary">More</a>
+              <div class="col-md-6">
+                <div class="card-body">
+                  <h5 class="card-title"><b>Caption:</b> {{image.image_name}}</h5>
+                  <p class="card-text"><b>Description:</b> {{image.description}}</p>
+                  <div class="card-footer">
+                    <p><b>Category:</b> {{image.category}}</p>
+                    <p><b>Location:</b> {{image.location}}</p>
+                    <p><b>Posted On:</b> {{image.posted_on}}</p>
+                  </div>                  
+                </div>
+              </div>
             </div>
           </div>
+        </div>
         {% endfor %}
+        <div id="modal01" class="modal" onclick="this.style.display='none'">
+          <span class="close">&times;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <div class="modal-content">
+            <img id="img01" style="max-width:400px;max-height:500px">               
+          </div>
+            <div id="card" class="card bg-light">                
+              <div style="float:left" id="description"></div>                
+            </div>
+        </div>                                                  
+        <script>            
+          var descriptionText = document.getElementById("description");            
+          function onClick(element) {
+            document.getElementById("img01").src = element.src;              
+            descriptionText.innerHTML = element.alt;
+            document.getElementById("modal01").style.display = "block";
+          }
+        </script>                                   
       {% endif %}                
     </div>
   </div>
 {% endblock content %}
+             
