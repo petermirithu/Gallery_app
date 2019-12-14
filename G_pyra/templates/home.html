@@ -2,11 +2,12 @@
 
 {% block content %}
 <h1 class="text-center" style="color:lightblue">WELCOME TO G_PYRA</h1>
-
-
+{% if copied %}
+   <h4 class="alert alert-success">Successfully copied {{copied}}</h4>
+{% endif %}
 <div class="container-fluid">
-  <div class="row">    
-    <div id="flipCards">
+  <div id="flipCards">
+    <div class="row">    
       <div class="col-md-4">
         <div class="wrapper">
           <div id="card">
@@ -16,9 +17,8 @@
             <div class="right">
               <h2>Select Place:</h2>
               <ul>
-                <li><a href="/images/Nairobi">Nairobi</a></li>
-                <li><a href="/images/Nakuru">Nakuru</a></li>
-                <li><a href="/images/Mombasa">Mombasa</a></li>        
+                <li><a class="btn btn-outline-danger" href="/images/Nairobi">Nairobi</a></li>
+                <li><a class="btn btn-outline-danger" href="/images/Nakuru">Nakuru</a></li>                
               </ul>      
             </div>
           </div>
@@ -36,8 +36,8 @@
             <div class="right">
               <h2>Select Place:</h2>
               <ul>
-                <li><a href="">Kalungu</a></li>
-                <li><a href="">Ndola</a></li>              
+                <li><a class="btn btn-outline-danger" href="/images/Kalungu">Kalungu</a></li>
+                <li><a class="btn btn-outline-danger" href="/images/Ndola">Ndola</a></li>              
               </ul>      
             </div>
           </div>
@@ -55,8 +55,8 @@
             <div class="right">
               <h2>Select Place:</h2>
               <ul>
-                <li><a href="">Dar-es-Salaam</a></li>              
-                <li><a href="">Arusha</a></li>        
+                <li><a class="btn btn-outline-danger" href="/images/Dar-es-Salaam">Dar-es-Salaam</a></li>              
+                <li><a class="btn btn-outline-danger" href="/images/Arusha">Arusha</a></li>        
               </ul>      
             </div>
           </div>
