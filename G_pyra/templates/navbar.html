@@ -1,5 +1,3 @@
-{% load static %}
-{% load bootstrap4 %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -16,29 +14,46 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a href="{% url 'home' %}" class="nav-link" style="color:orange" href=""><i class='fas fa-home'></i> Home</i><span class="sr-only">(current)</span></a></a>
+            <a href="{% url 'home' %}" class="nav-link"  href=""><i class='fas fa-home'></i> Home</i><span class="sr-only">(current)</span></a></a>
           </li>     
           
           <li class="nav-item">
             <a class="nav-link"></a>
-          </li>                                                   
+          </li>                 
+          <div class="dropdown">
+            <a class="nav-link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Places <i class="fa fa-angle-double-down"></i></a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <h4>Kenya</h4>
+              <a class="nav-link" href="/images/Nairobi">Nairobi</a>
+              <a class="nav-link" href="/images/Nakuru">Nakuru</a>
+              <a class="nav-link" href="/images/Mombasa">Mombasa</a>
+              <h4>Zambia</h4>
+              <a class="nav-link" href="/images/Kalungu">Kalungu</a>
+              <a class="nav-link" href="/images/Ndola">Ndola</a>
+              <h4>Tanzania</h4>
+              <a class="nav-link" href="/images/Dar-es-Salaam">Dar-es-Salaam</a>
+              <a class="nav-link" href="/images/Arusha">Arusha</a>
+            </div>
+          </div>                                  
         </ul>
         <ul class="navbar-nav ml-auto">  
-          <li>
-            <form class="navbar-form" role='search' action="{% url 'searchRes' %}">              
-                <input type="text" class="form-control" placeholder="Search Category" name="pics">
-                <button type="submit"><i style="color:red" class='fa fa-search'></i></button>              
-            </form>  
-          </li>                   
+        
+          <form class="form-inline active-purple-3 active-purple-4" role="search" action="{% url 'searchRes' %}">
+            <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search By Category"
+              aria-label="Search" name="pics">
+            <li class="nav-item">
+              <a class="nav-link"></a>
+            </li>       
+
+            <button type="submit"><i class="fas fa-search" aria-hidden="true"></i></button>
+          </form>
+          
+          <li class="nav-item">
+            <a class="nav-link"></a>
+          </li>                          
         </ul>
       </div>
-    </nav>
-
-    {% block scripts %}
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      {% bootstrap_javascript %}
-    {% endblock scripts %}
-    
+    </nav>        
   </body>
 </html>    
 
