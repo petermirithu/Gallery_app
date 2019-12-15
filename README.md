@@ -1,10 +1,10 @@
-# G_Pyra
+# [G_Pyra](https://gallapyra254.herokuapp.com/)
 
 This project was generated with [Django](https://www.djangoproject.com) version 2.2.8 <br>
 
 ![picture](./static/logo/logo.png)
 
-To view the site Click [G_Pyra]()
+To view the site Click [G_Pyra](https://gallapyra254.herokuapp.com/)
 
 ## Author: 
   * [Peter Mirithu](https://github.com/petermirithu/Gallery_app)
