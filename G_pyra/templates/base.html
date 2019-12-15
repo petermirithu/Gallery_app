@@ -13,15 +13,60 @@
     {% block styles %}
       {% bootstrap_css %}   
       <link rel="stylesheet" href="{% static 'css/home.css' %}">
+      <link href="https://fonts.googleapis.com/css?family=Kavoon&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
     {% endblock styles %}
 
   </head>
   <body>
   {% include 'navbar.html' %}
 
-  {% block content %}
-
-  
+  {% block content %}    
+    <div id="myNav" class="overlay">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <div class="overlay-content">
+        <a href="{% url 'home' %}">Home</a>        
+        <a>
+        <div class="dropdown">
+          <a class="nav-link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Places <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">            
+            <a href="/images/Nairobi">Nairobi</a>
+            <a href="/images/Nakuru">Nakuru</a>
+            <a href="/images/Mombasa">Mombasa</a>            
+            <a href="/images/Kalungu">Kalungu</a>
+            <a href="/images/Ndola">Ndola</a>            
+            <a href="/images/Dar-es-Salaam">Dar-es-Salaam</a>
+            <a href="/images/Arusha">Arusha</a>
+          </div>                                  
+        </div>
+        </a>
+        <a>  
+        <div class="dropdown">
+          <a class="nav-link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">            
+            <a href="/category/Landscape">Landscape photos</a><br>
+            <a href="/category/Wildlife">Wildlife photos</a><br>
+            <a href="/category/Portrait">Portrait photos</a><br>
+            <a href="/category/Architectural">Architectural photos</a><br>
+            <a href="/category/Food">Food photos</a><br>
+            <a href="/category/Vehicles">Vehicles photos</a><br>
+            <a href="/category/Fashion">Fashion photos</a><br>
+          </div>
+        </div>  
+        </a>                                        
+      </div>
+    </div>  
+    <div id="mnbar">
+      <span style="font-size:40px;cursor:pointer" class="menubar" id="menubar"onclick="openNav()">&#9776;</span>
+    </div>  
+    <script>
+      function openNav() {
+        document.getElementById("myNav").style.width = "100%";
+      }
+      function closeNav() {
+        document.getElementById("myNav").style.width = "0%";
+      }     
+    </script>
   {% endblock content %}
 
   {% block scripts %}
