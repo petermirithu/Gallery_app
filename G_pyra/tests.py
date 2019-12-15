@@ -1,6 +1,6 @@
 from django.test import TestCase
 from .models import Category,Location,Image
-
+import pyperclip
 
 class CategoryTestCase(TestCase):
   '''
@@ -243,8 +243,8 @@ class ImageTestCase(TestCase):
     self.image1.save_image()
     self.image2.save_image()
 
-    copied=Image.copy_image(self.image2.image_url)
+    Image.copy_image(self.image2.image_url.url)
 
-    self.assertEquals(copied,self.image2.image_url)
+    self.assertEquals(self.image2.image_url.url,pyperclip.paste())
     
 
