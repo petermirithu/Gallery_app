@@ -1,6 +1,6 @@
 from django.db import models
 import datetime as dt
-import copy
+import pyperclip  
 
 class Category(models.Model):
   '''
@@ -133,10 +133,8 @@ class Image(models.Model):
   def copy_image(cls,image_url):
     '''
     function that helps in copying the image url
-    '''
-    copied_element=copy.deepcopy(image_url)
-
-    return copied_element
+    '''    
+    pyperclip.copy(image_url)  
 
   def __str__(self):
       return self.image_name
