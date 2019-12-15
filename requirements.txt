@@ -12,6 +12,7 @@ mccabe==0.6.1
 Pillow==6.2.1
 psycopg2==2.8.4
 pylint==2.4.4
+pyperclip==1.7.0
 python-decouple==3.3
 pytz==2019.3
 six==1.13.0
