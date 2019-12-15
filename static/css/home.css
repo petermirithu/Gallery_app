@@ -1,33 +1,146 @@
+body{  
+  background-image: url("https://images.unsplash.com/photo-1485011062108-85580cbb0d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-attachment: fixed; 
+  font-family: 'Playfair Display', serif; 
+}
+/* ***************General styling for cards */
+.card{
+  box-shadow: 10px 10px black;  
+}
+h1{
+  color: lightblue;  
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+  font-family: 'Kavoon', cursive;
+}
+h2{
+  color: white;  
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+/* *************************side menubar****************************************8 */
+#menubar{
+  position: fixed;
+  bottom: -10px;
+  right: 10px;
+  text-shadow: 1px 1px 2px black, 0 0 25px rgb(255, 0, 0), 0 0 5px rgb(255, 3, 3);      
+  background-color: rgb(255, 255, 255);
+  width:50px;
+  animation: fadeIn .90s infinite alternate;  
+}
+#mnbar{  
+  animation: bounce 1s infinite alternate;  
+  position: fixed;
+  bottom: -0px;
+  right: 10px;
+}
+@keyframes fadeIn{
+  0%{
+    opacity: 0.33;
+    transform: scale(.89);
+  }
+}
+@keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-15px);
+  }
+}
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+.overlay-content div:hover{
+  color:white;
+}
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
 /************************************ navbar css ************************************/
 #bar{
-  width: vw;        
+  width: 100%;        
+  height: 60px;
   border: 1px solid #222;
-  background-color: #111;
-  background-image: linear-gradient(#444, #111);
+  background-color: black;  
   border-radius: 6px;
-  
-  box-shadow: 0 1px 1px #777;
-}      
+  transition: height 2s;
+  box-shadow: 0 1px 1px rgb(0, 0, 0);
+
+}   
+#bar:hover{  
+  height:70px;  
+}
 #bar a{
   cursor:pointer;
-  color:orange;
+  color: rgb(192, 192, 192);
+  background-color: rgb(0, 0, 0);
 }
 #bar a:hover{
-  background-color:lightblue;
-  color:black;
+  background-color: whitesmoke;  
+  color: black;
 }      
 /* card style */
 .cardx{
   margin-left: 80%;
 }
+.navCate{
+  color:  whitesmoke;
+}
 .navCate a {
   cursor: pointer;
   width: 200px;
   margin-bottom: 10px;
+  color:  whitesmoke;
 }
-.navCate a:hover{
-  background-color: #222;
+.navCate a:hover{  
   color: white;
+  width: 250px;  
+  background-color: black;  
+  transition: width 2s;
 }
 
 
@@ -96,13 +209,18 @@ body{
   opacity: 1; 
 }
 
-#flipCards ,h1,h2{
+#flipCards h1{
   margin: 0;
   font-size: 38px;
   letter-spacing: -.25px;  
   font-family: 'Sarala'; 
   font-weight: 700;
-  color: lightblue;
+  color: black;
+  text-shadow: 2px 2px 5px red;
+}
+#flipCards h2{
+  color: rgb(255, 255, 255);
+  text-shadow: 4px 4px 6px rgb(0, 204, 255);
 }
 
 #flipCards p{
@@ -135,14 +253,14 @@ body{
   margin-left: 20px;
 }
 
-@keyframes float{
-  0%{
-    transform: translateZ(20px);
+  @keyframes float{
+    0%{
+      transform: translateZ(20px);
+    }
+    100%{
+      transform: translateY(-21px) translateX(20px) translateZ(30px);
+    }
   }
-  100%{
-    transform: translateY(-21px) translateX(20px) translateZ(30px);
-  }
-}
 /* make the image small and slide on the right */
 #flipCards #card:hover ~ .img-wrapper img{
   transform: scale(0.6) translateX(77%) translateY(50%);
@@ -179,13 +297,6 @@ opacity: 0;
   background-position: left;
 }
 
-@keyframes fadeIn{
-  0%{
-    opacity: 0.33;
-    transform: scale(.89);
-  }
-}
-
 @media only screen and (max-width: 600px){
   body{
     transform: scale(.67);
@@ -196,14 +307,14 @@ opacity: 0;
 #myImg{
   margin-left: 10px;
   width: fit-content;
-  animation: beat .70s infinite alternate;
+  animation: beat .90s infinite alternate;
 }
 #cardImg{
   width:250px;
 }
 
 @keyframes beat{
-	to { transform: scale(0.95); }
+	to { transform: scale(0.99); }
 }
 .img254{
   border-radius: 5px;
