@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404
 from .models import Image,Category,Location
 from django.core.exceptions import ObjectDoesNotExist
+import pyperclip
 
 def home(request):
   '''
@@ -43,7 +44,8 @@ def copy_image_url(request,image_url):
   '''
   view function that refreshes the page once someona has copied the image url
   '''
-  copied_ulr=Image.copy_image(image_url)
+  Image.copy_image(image_url)
+  copied_ulr=pyperclip.paste()
   
   return render(request,'home.html',{"copied":copied_ulr})
 
