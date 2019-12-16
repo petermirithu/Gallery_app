@@ -128,13 +128,13 @@ h2{
   margin-left: 80%;
 }
 .navCate{
-  color:  whitesmoke;
+  color:  white;
 }
 .navCate a {
   cursor: pointer;
   width: 200px;
   margin-bottom: 10px;
-  color:  whitesmoke;
+  color:  white;
 }
 .navCate a:hover{  
   color: white;
@@ -344,7 +344,6 @@ opacity: 0;
   width: 30vw;
   max-width: 700px;
   height: 20vh;  
-  /* transform: translate(-50%, -50%); */
 }
 .close {
   position: absolute;
@@ -361,12 +360,6 @@ opacity: 0;
   text-decoration: none;
   cursor: pointer;
 }
-/* .modal-content, #caption {  
-  -webkit-animation-name: zoom;
-  -webkit-animation-duration: 0.6s;
-  animation-name: zoom;
-  animation-duration: 0.6s;
-} */
 .modal-content, #card {  
   -webkit-animation-name: zoom;
   -webkit-animation-duration: 0.6s;
