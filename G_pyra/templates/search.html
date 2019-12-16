@@ -30,7 +30,8 @@
                       <p><b>Category:</b> {{image.category}}</p>
                       <p><b>Location:</b> {{image.location}}</p>
                       <p><b>Posted On:</b> {{image.posted_on}}</p>
-                      <p><a class="btn btn-outline-primary"href="/copy/{{image.image_url}}">Copy</a></p>
+                      <input style="display:none" type="text" value="https://gallapyra254.herokuapp.com{{image.image_url.url}}" id="myInput">                  
+                      <p><a onclick="myFunction()" class="btn btn-outline-primary">Copy</a></p>
                     </div>                  
                   </div>
                 </div>
@@ -46,7 +47,16 @@
                   <div style="float:left" id="description"></div>                
                 </div>
             </div>                                                  
-            <script>            
+            <script>    
+              function myFunction() {
+                document.getElementById("myInput").style.display = "block";
+                var copyText = document.getElementById("myInput");
+                copyText.select();
+                copyText.setSelectionRange(0, 99999)
+                document.execCommand("copy");
+                alert("Copied: " + copyText.value);
+              }               
+
               var descriptionText = document.getElementById("description");            
               function onClick(element) {
                 document.getElementById("img01").src = element.src;              
