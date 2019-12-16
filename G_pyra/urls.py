@@ -8,8 +8,7 @@ urlpatterns = [
     url('^$',views.home,name='home'),    
     url(r'^search/',views.search,name="searchRes"),    
     path('images/<str:location_name>',views.images_by_location,name="ImagesByLocation"),
-    path('category/<str:category_name>',views.images_by_category,name="ImagesByCategory"),
-    path('copy/images/<str:image_url>',views.copy_image_url,name="copyUrl"),
+    path('category/<str:category_name>',views.images_by_category,name="ImagesByCategory"),    
 ]
 
 if settings.DEBUG:
